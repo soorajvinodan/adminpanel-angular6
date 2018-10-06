@@ -1,9 +1,47 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import * as Chart from 'chart.js';
+import * as ChartConst from 'ng6-o2-chart';
+
+
+import {
+	Ng6O2ChartModule
+}
+from 'ng6-o2-chart';
+ 
+import {
+	Router
+}
+from '@angular/router';
+import {
+	NgStyle
+}
+from '@angular/common';
+import {
+	DomSanitizer, SafeHtml
+}
+from '@angular/platform-browser';
+import PerfectScrollbar from 'perfect-scrollbar';
+import {
+	getInfoService
+}
+from '../getClassInfo.service';
+import {
+	UserInfoService
+}
+from './../user-info.service'; 
+import {
+	environment
+}
+from '../../environments/environment';
+import {
+	Message
+}
+from '@angular/compiler/src/i18n/i18n_ast';
+
 
 @Component({
   selector: 'app-charts',
-  styles: ['.card-body,.exampleChart{  position: relative;   min-height:45vh; }'],
+	styleUrls: ['./charts.component.scss', '../app.component.scss'],
   templateUrl: './charts.component.html'
 })
 export class ChartsComponent implements OnInit {
@@ -14,6 +52,340 @@ export class ChartsComponent implements OnInit {
   exampleDataSet2;
   exampleData;
   exampleChartCanvas;
+
+
+
+
+	getData: any;
+	postData: any;
+	wikiData: any;
+	classes: any[] = [];
+	subjects: any[] = [];
+	boardName: string = 'CBSE';
+	selectedClass: string = this.boardName + ': Class 1';
+	selectedClassVal: string = 'Class 1';
+	classesOpen: boolean = false;
+	showContainer: boolean = false;
+	showMyNoteBooksContainer: boolean = false;
+	showSerachedContent: boolean = false;
+	classAndUnit: any;
+	noteBookClassAndUnit: any;
+	searchTermResults: any[];
+	height: string;
+	sbHeight: string;
+	currentUnit: any;
+	currentSubject: string;
+	selectedTermResult: any;
+	selectedTermImgResults: any;
+	selectedImages: any;
+	selectedVideos: any;
+	selectedTermVidResults: any;
+	unitTitle: string;
+	baseUrl: string = environment.serverUrl;
+	showModal: boolean = false;
+	modalTextWiki: string;
+	usrName: string;
+	usrInitials: string;
+  usrEm: string;
+  instituteNm : string;
+	unit: string;
+	loginData: any;
+	noteboookRes: any;
+	content_type: string = "image";
+	currentImg: string;
+	showImage: boolean = false;
+	showTooltip: boolean = false;
+	showTooltipResult: boolean = false;
+	showActionTooltip: boolean = false;
+	showActionTooltipResult: boolean = false;
+	selected_text_array: any[] = [];
+	copytooltip: any;
+	hidetooltiptimer: any;
+	hidecopytooltiptimer: any;
+	hideactiontooltiptimer: any;
+	copysuccess: any;
+	dataToEnableBtns: any[] = [];
+	showNmPopup: boolean = false;
+	notebookCreated: boolean = false;
+	validationError: string = "";
+	selectedContentErr: string = "";
+	classTabText: string = "Add School";
+	noteBookTxt: string = "My Notebooks";
+	tabSelected: string = this.classTabText;
+	noteBookName: string;
+	notebookObj: any;
+	template1: boolean = false;
+	contentIndex: number = 0;
+	firstContent: any;
+	secondContent: any;
+	singleContent: any;
+	firstContentType: any;
+	secondContentType: any;
+	singleContentType: any;
+	maxLen: number = 0;
+	name = 'Pigeon Admin Web';
+
+
+
+	title = 'app';
+	chartType: string;
+	configData: any;
+	barDataJson: any;
+	geoMapDataJson: any;
+	geoOrthographicDataJson: any;
+	choroplethDataJson: any;
+	scatterPlotDataJson: any;
+	lineDataJson: any;
+	histogramDataJson: any;
+	pieDataJson: any;
+	packLayoutDataJson: any;
+	treeMapDataJson: any;
+	stackBarDataJson: any;
+	treeDataJson: any;
+	forceDataJson: any;
+	DataSetJson: string;
+	lineTypeName: string;
+	barTypeName: string;
+	pieTypeName: string;
+	scatterPlotTypeName: string;
+	histogramTypeName: string;
+	stackBarTypeName: string;
+	geoMapTypeName: string;
+	geoOrthographicTypeName: string;
+	treeMapTypeName: string;
+	packLayoutTypeName: string;
+	choroplethTypeName: string;
+	treeTypeName: string;
+	forceTypeName: string;
+	devices: any = [];
+	private initilizeData() {
+		// ConfigData = this.httpClient.get('assets/json/ConfigData.json');
+		this.configData = {
+			// tslint:disable-next-line:quotemark
+			"className": {
+				'axis': 'axis',
+				'axisXBorder': 'axis_x',
+				'axisXText': 'axis-x-text',
+				'bar': 'bar',
+				'barValue': 'bar-value',
+				'line': 'line',
+				'multiLinePrefix': 'line-',
+				'grid': 'grid',
+				'pie': 'pie',
+				'pieInnerTitle': 'pie-inner-title',
+				'pieInnerRadius': 'total',
+				'histogram': 'histogram',
+				'histogramBar': 'histogram-bar',
+				'treemap': 'treemap',
+				'treemapLabel': 'treemap-label',
+				'packlayout': 'packlayout',
+				'packlayoutLabel': 'packlayout-label',
+			},
+			'label': {
+				'display': true,
+			},
+			'title': {
+				'display': true,
+				'name': 'Title',
+				'className': 'chart-title',
+				'height': 30,
+				'leftMargin': -20,
+				'bottomMargin': 10
+			},
+			'maxValue': {
+				'auto': true,
+				'x': 100,
+				'y': 100,
+			},
+			'legend': {
+				'display': true,
+				'position': 'right',
+				'totalWidth': 80,
+				'initXPos': 5,
+				'initYPos': 10,
+				'rectWidth': 10,
+				'rectHeight': 10,
+				'xSpacing': 2,
+				'ySpacing': 2
+			},
+			'color': {
+				'auto': true, //
+				'defaultColorNumber': 10,
+				'opacity': 1.0,
+				'userColors': ['blue', 'red', 'green', 'yellow', 'PaleGoldenrod', 'Khaki', 'DarkKhaki', 'Gold', 'Cornsilk', 'BlanchedAlmond', 'Bisque', 'NavajoWhite', 'Wheat', 'BurlyWood', 'Tan', 'RosyBrown', 'SandyBrown', 'Goldenrod', 'DarkGoldenrod', 'Peru', 'Chocolate'],
+				'focusColor': 'red',
+			},
+			'pie': {
+				'innerRadius': {
+					'percent': 20,
+					'title': 'Total'
+				},
+				'value': {
+					'display': true,
+				},
+				'percent': {
+					'display': false,
+				}
+			},
+			'line': {
+				'legend': 'lineEnd',
+				'interpolate': 'linear',
+			},
+			'grid': {
+				'x': {
+					'display': true,
+				},
+				'y': {
+					'display': true,
+				},
+			},
+			'margin': {
+				'top': 30,
+				'left': 30,
+				'right': 10,
+				'bottom': 20,
+				'between': 5
+			},
+			'axis': {
+				'rotation': 0,
+				'borderLineWidth': 1,
+				'xLabel': {
+					'leftMargin': 0,
+					'bottomMargin': 5
+				},
+				'yLabel': {
+					'leftMargin': 0,
+					'bottomMargin': 0
+				},
+			},
+			'animation': {
+				'enable': true,
+				'duration': 4000,
+			},
+		};
+		this.barDataJson = {
+			'series': ['English', 'Math'],
+			'data': [{
+				'x': 'suzuki',
+				'y': [92, 73],
+			}, {
+				'x': 'inoue',
+				'y': [69, 45],
+			}, {
+				'x': 'sato',
+				'y': [70, 100],
+			}, {
+				'x': 'tanaka',
+				'y': [43, 66],
+			}, {
+				'x': 'ida',
+				'y': [60, 70],
+			}, {
+				'x': 'kato',
+				'y': [55, 63],
+			}, ],
+		};
+		this.lineDataJson = {
+			'series': ['year', 'sell', ],
+			'data': [{
+				'name': 'software',
+				'value': [{
+					'x': '2010',
+					'y': 18
+				}, {
+					'x': '2011',
+					'y': 22
+				}, {
+					'x': '2012',
+					'y': 30
+				}, {
+					'x': '2013',
+					'y': 31
+				}, ]
+			}, {
+				'name': 'hardware',
+				'value': [{
+					'x': '2010',
+					'y': 15
+				}, {
+					'x': '2011',
+					'y': 16
+				}, {
+					'x': '2012',
+					'y': 10
+				}, {
+					'x': '2013',
+					'y': 21
+				}, ]
+			}, {
+				'name': 'device',
+				'value': [{
+					'x': '2010',
+					'y': 25
+				}, {
+					'x': '2011',
+					'y': 26
+				}, {
+					'x': '2012',
+					'y': 30
+				}, {
+					'x': '2013',
+					'y': 31
+				}, ]
+			}, {
+				'name': 'others',
+				'value': [{
+					'x': '2010',
+					'y': 100
+				}, {
+					'x': '2011',
+					'y': 16
+				}, {
+					'x': '2012',
+					'y': 20
+				}, {
+					'x': '2013',
+					'y': 41
+				}, ]
+			}, ],
+		};
+		this.pieDataJson = {
+			'data': [{
+				'name': 'software',
+				'value': 30,
+			}, {
+				'name': 'hardware',
+				'value': 25
+			}, {
+				'name': 'device',
+				'value': 16
+			}, {
+				'name': 'others',
+				'value': 4
+			}, ],
+		};
+ 
+	}
+
+	constructor(private GetInfoService: getInfoService, private sanitizer: DomSanitizer, private router: Router, private userInfoService: UserInfoService) {
+ 
+		this.barTypeName = ChartConst.LINE_CHART_TYPE_NAME;
+		this.lineTypeName = ChartConst.LINE_CHART_TYPE_NAME;
+		this.barTypeName = ChartConst.BAR_CHART_TYPE_NAME;
+		this.pieTypeName = ChartConst.PIE_CHART_TYPE_NAME;
+		this.scatterPlotTypeName = ChartConst.SCATTER_PLOT_CHART_TYPE_NAME;
+		this.histogramTypeName = ChartConst.HISTOGRAM_CHART_TYPE_NAME;
+		this.stackBarTypeName = ChartConst.STACK_BAR_CHART_TYPE_NAME;
+		this.geoMapTypeName = ChartConst.GEO_MAP_CHART_TYPE_NAME;
+		this.geoOrthographicTypeName = ChartConst.GEO_ORTHOGRAPHIC_CHART_TYPE_NAME;
+		this.treeMapTypeName = ChartConst.TREE_MAP_CHART_TYPE_NAME;
+		this.packLayoutTypeName = ChartConst.PACK_LAYOUT_CHART_TYPE_NAME;
+		this.choroplethTypeName = ChartConst.CHOROPLETH_CHART_TYPE_NAME;
+		this.treeTypeName = ChartConst.TREE_CHART_TYPE_NAME;
+		this.forceTypeName = ChartConst.FORCE_CHART_TYPE_NAME;
+		this.initilizeData();
+     
+	}
 
   ngOnInit() {
     // Bar chart
