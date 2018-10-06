@@ -39,6 +39,7 @@ export class SidebarComponent {
     {link: '/maps', label: 'Maps', icon: 'place'},
     {link: '/editors', label: 'Editors', icon: 'edit'},
     {link: '/calendar', label: 'Calendar', icon: 'date_range'},
+    {link: '/settings', label: 'Settings', icon: 'settings'},
     {label: 'Menu', icon: 'menu', subItem: [
       {link: 'void()', label: 'Sub Menu L1', icon: 'l1'},
       { label: 'Sub Menu L1', icon: 'l1' , subItem: [

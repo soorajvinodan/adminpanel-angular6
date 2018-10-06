@@ -14,7 +14,11 @@ const routes: Routes = [
       { path: 'charts', loadChildren: '../charts/charts.module#ChartsModule' },
       { path: 'maps', loadChildren: '../maps/maps.module#MapsModule' },
       { path: 'editors', loadChildren: '../editors/editors.module#EditorsModule' },
-      { path: 'calendar', loadChildren: '../calendar/calendar.module#CalendarModule' }
+      { path: 'calendar', loadChildren: '../calendar/calendar.module#CalendarModule' },
+
+      { path: 'settings', loadChildren: '../settings/settings.module#SettingsModule' }
+
+
     ]
   }
 ];
