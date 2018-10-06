@@ -1,0 +1,90 @@
+<div id="loginForm" class="loginRegisterWrap">
+    <div class="container">
+
+        <div class="login-form-container" >
+            <div class="row login-form">
+
+                <div class="col-xs-12 col-sm-12 col-lg-12 main-div">
+
+                    <div class="panel">
+
+                        <div class="form-group">
+                            <h4 class="form-text-center-h4">Sign In</h4>
+                            <span class="form-text-center">Welcome Back</span>
+                        </div>
+
+                        <div class="form-group">
+                            <span class="error_message"  id="uEm_div">
+                                {{validationError}}
+                            </span>
+                            <input class="form-control" type="text" id="uEm" [ngClass] = "{'error-input' : validationError}" autocomplete="off" Placeholder="Email" />
+                        </div>
+
+                        <div class="form-group">
+                            <span class="error_message"  id="uPwd_div">
+                                 {{passwordValidationError}}
+                            </span>
+                            <input class="form-control" type="password" id="uPwd" [ngClass] = "{'error-input' : passwordValidationError}" autocomplete="off" Placeholder="Password" />
+                        </div>
+
+                        <div class="form-group">
+                            <button class="btn btn-primary" id="loginBtn" (click)="checkAndLogin()">Sign In</button>    
+                        </div>
+
+                        <!-- <div class="form-group">
+                            <a class="form-text-center" href="forgotpassword">Forget Password</a>    
+                        </div> -->
+                        
+                        <div class="form-group">
+                        
+                        <span class="form-text-center">Don't have an account? 
+                            <span class="links" (click) = "showSignup()" >REGISTER HERE</span>
+                        </span>
+                        </div>                    
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div  class="login-modal fade in" id="loginModal" *ngIf="showloginPopup">
+                <div class="modal-dialog modal-lg">
+                    <div  class="login-modal-content">
+                    <div class="login-modal-head">
+                        <button type="button" class="close" (click)="closeloginPopup()" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+    
+                    </div>
+                    <div style="clear: both;"></div>
+    
+                    <div class="login-modal-content-body">
+                        <div class="form-group">
+                            <h4 class="header-Text">Error!</h4>
+                        </div>
+                        <div class="form-group">
+                            <span class="login_error_message">{{errorMessage}}</span>
+                        </div> 
+    
+                        <div class="form-group">
+                            <button class="btn btn-primary" id="loginBtn" (click)="closeloginPopup()">Try Again</button>
+                        </div>
+        
+                        <div class="form-group">
+                            <span class="contact-info">Contact <span class="links">
+                                <a href="mailto:support@cybernetyx.com?Subject=Error%20in%20Login%20page" target="_top">support@cybernetyx.com</a>
+                            </span> for further assistance.</span>
+                        </div>
+                    </div>
+    
+                    <div class="login-modal-footer">
+    
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+    </div>
+</div>

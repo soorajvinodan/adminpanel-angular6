@@ -1,0 +1,17 @@
+@font-face {
+    font-family: 'AverinHeavy';
+    src : url('../assets/font/AEH.ttf')
+}
+@font-face {
+    font-family: 'AverinLight';
+    src : url('../assets/font/AEL.ttf')
+}
+
+$font-family-base: 'Averin';
+$bgColor-sb : #f5f5f5;
+$box-shadow : #dedbdb;
+$blueColor : #0283ff;
+$whiteColor : white;
+$lightColor : #8e8f95;
+$mobile: 480px;
+$tablet : 768px;

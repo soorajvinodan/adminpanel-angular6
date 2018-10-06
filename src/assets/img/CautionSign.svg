@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>Caution Sign</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Caution-Sign" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <circle id="Oval" stroke="#FF3B30" stroke-width="2" fill-rule="nonzero" cx="24" cy="24" r="9"></circle>
+        <text id="!" font-family="zArista, [z] Arista" font-size="16" font-weight="normal" letter-spacing="-0.3858822" fill="#FF3B30">
+            <tspan x="22.6409411" y="28">!</tspan>
+        </text>
+    </g>
+</svg>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="214px" height="48px" viewBox="0 0 214 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>mdpi/Group</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Apple-TV-Copy-2" transform="translate(-484.000000, -24.000000)">
+            <g id="Group" transform="translate(484.000000, 24.000000)">
+                <text id="einsAcademy" font-family="Avenir-Medium, Avenir" font-size="24" font-weight="400" letter-spacing="0.500338256" fill="#A1A3AD">
+                    <tspan x="60" y="32">eins</tspan>
+                    <tspan x="105.105353" y="32" font-family="Avenir-Black, Avenir" font-weight="700">Academy</tspan>
+                </text>
+                <g id="notebook_icon-copy" fill-rule="nonzero">
+                    <path d="M0,0 L37.3125,0 C38.8658009,-4.42416165e-15 40.125,1.25919914 40.125,2.8125 L40.125,45.1875 C40.125,46.7408009 38.8658009,48 37.3125,48 L0,48 L0,0 Z" id="Rectangle" fill="#A1A3AD"></path>
+                    <rect id="Rectangle" fill="#FFFFFF" x="8.25" y="10.6875" width="24.1875" height="7.875"></rect>
+                    <path d="M42.75,15.9375 L46.59375,15.9375 C47.3704004,15.9375 48,16.5670996 48,17.34375 L48,25.21875 C48,25.9954004 47.3704004,26.625 46.59375,26.625 L42.75,26.625 L42.75,15.9375 Z" id="Rectangle" fill="#A1A3AD"></path>
+                    <path d="M42.75,2.8125 L46.59375,2.8125 C47.3704004,2.8125 48,3.44209957 48,4.21875 L48,12.09375 C48,12.8704004 47.3704004,13.5 46.59375,13.5 L42.75,13.5 L42.75,2.8125 Z" id="Rectangle" fill="#A1A3AD"></path>
+                    <path d="M42.75,29.4375 L46.59375,29.4375 C47.3704004,29.4375 48,30.0670996 48,30.84375 L48,38.71875 C48,39.4954004 47.3704004,40.125 46.59375,40.125 L42.75,40.125 L42.75,29.4375 Z" id="Rectangle" fill="#A1A3AD"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

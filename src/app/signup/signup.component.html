@@ -1,0 +1,89 @@
+<div id="registerForm" class="loginRegisterWrap">
+    <div class="container">
+
+        <div class="form-container" >
+            <div class="row login-form">
+
+                <div class="col-xs-12 col-sm-12 col-lg-6 main-div">
+
+                    <div class="panel">
+
+                        <div class="form-group">
+                            <h4 class="text-left form-text-center-h4">Register Account</h4>
+                            <p class="text-left">Already have an Account? 
+                                <span class="links" (click) = "showLogin()" >SIGN IN</span>
+                            </p>
+                        </div>
+
+                        <div class="form-group">
+                            <span class="error_message"  id="una_div">{{unaErr}}</span>
+                            <input class="form-control" type="text" id="una" [ngClass] = "{'error-input' : unaErr}" autocomplete="off" Placeholder="Name" />
+                        </div>
+                        <div class="form-group">
+                            <span class="error_message"  id="appKey_div">{{instituteErr}}</span>
+                            <input class="form-control" type="text" id="instnm" [ngClass] = "{'error-input' : instituteErr}" autocomplete="off" placeholder="Institution" />
+                           
+                        </div>
+                        <div class="form-group">
+                            <span class="error_message"  id="email_div">{{emErr}}</span>
+                            <input class="form-control" type="email" [ngClass] = "{'error-input' : emErr}" id="email" autocomplete="off" Placeholder="Email" />
+                        </div>
+                        <div class="form-group">
+                            <span class="error_message"  id="pwd_div">{{pwdErr}}</span>
+                            <input class="form-control" type="password" id="pwd" [ngClass] = "{'error-input' : pwdErr}" autocomplete="off" placeholder="Password" />
+                            
+                        </div>
+                        <div class="form-group">
+                            <span class="error_message"  id="confirm_pwd_div">{{rpwdErr}}</span>
+                            <input class="form-control" type="password" id="confirm_pwd" [ngClass] = "{'error-input' : rpwdErr}" autocomplete="off" placeholder="Confirm Password" />
+                        </div>
+
+                        <div class="form-group btn-3">
+                            <button class="btn btn-primary" id="loginBtn" (click)="registerNew()">Register</button>
+                        </div>
+                         
+                    </div>
+                </div>
+                <div class=" col-lg-6 main-div-img">
+                    <img class="img-login" src="assets/img/Registration_Form_Illustration.png">
+                </div>
+            </div>
+        </div>
+
+
+        <div  class="signup-modal fade in" id="signupModal" *ngIf="showsignupPopup">
+            <div class="modal-dialog modal-lg">
+                <div  class="signup-modal-content">
+                <div class="signup-modal-head">
+                    <button type="button" class="close" (click)="closesignupPopup()" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+
+                </div>
+                <div style="clear: both;"></div>
+
+                <div class="signup-modal-content-body">
+                    <div class="form-group">
+                        <h4 class="header-Text">Error!</h4>
+                    </div>
+                    <div class="form-group">
+                        <span class="signup_error_message">{{validationError}}</span>
+                    </div> 
+
+                    <div class="form-group">
+                        <button class="btn btn-primary" id="loginBtn" (click)="closesignupPopup()">Try Again</button>
+                    </div>
+    
+                    <div class="form-group">
+                        <span class="contact-info">Contact <span class="links"><a href="mailto:support@cybernetyx.com?Subject=Error%20in%20Register%20page" target="_top">support@cybernetyx.com</a></span> for further assistance.</span>
+                    </div>
+                </div>
+
+                <div class="signup-modal-footer">
+
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

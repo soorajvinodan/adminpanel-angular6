@@ -1,0 +1,14 @@
+{
+    "env":"Dev",
+    "port" : "8060",
+    "keySec" : "cnxpgn2018",
+    "pwdSec" : "cnxpgnpwd",
+    "devBuildOrigin" : "http://localhost:8060",
+    "devUrlOrigin" : "http://localhost:4200",
+    "dbConf" : {
+        "classDbUrl" : "mongodb://localhost:27017/classDetail",
+        "pigeonUsrDbUrl" :"mongodb://localhost:27017/pigeonUserDetail",
+        "deviceDbUrl" :"mongodb://localhost:27017/deviceDetail"
+    },
+    "thumbnailPath" : "../../images/"
+}

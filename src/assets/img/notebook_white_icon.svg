@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="256px" height="256px" viewBox="0 0 256 256" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>mdpi/notebook_icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Apple-TV-Copy-2" transform="translate(-1024.000000, -345.000000)" fill-rule="nonzero">
+            <g id="notebook_icon" transform="translate(1024.000000, 345.000000)">
+                <path d="M0,0 L199,0 C207.284271,-1.52179594e-15 214,6.71572875 214,15 L214,241 C214,249.284271 207.284271,256 199,256 L0,256 L0,0 Z" id="Rectangle" fill="#FFFFFF"></path>
+                <rect id="Rectangle" fill="#CDCED4" x="44" y="57" width="129" height="42"></rect>
+                <path d="M228,85 L248.5,85 C252.642136,85 256,88.3578644 256,92.5 L256,134.5 C256,138.642136 252.642136,142 248.5,142 L228,142 L228,85 Z" id="Rectangle" fill="#FFFFFF"></path>
+                <path d="M228,15 L248.5,15 C252.642136,15 256,18.3578644 256,22.5 L256,64.5 C256,68.6421356 252.642136,72 248.5,72 L228,72 L228,15 Z" id="Rectangle" fill="#FFFFFF"></path>
+                <path d="M228,157 L248.5,157 C252.642136,157 256,160.357864 256,164.5 L256,206.5 C256,210.642136 252.642136,214 248.5,214 L228,214 L228,157 Z" id="Rectangle" fill="#FFFFFF"></path>
+            </g>
+        </g>
+    </g>
+</svg>
