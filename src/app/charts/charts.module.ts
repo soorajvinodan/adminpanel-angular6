@@ -4,8 +4,6 @@ import { ChartsComponent } from './charts.component';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { NgSelectModule } from '@ng-select/ng-select';
-
-
 import { Ng6O2ChartModule } from 'ng6-o2-chart';
 
 

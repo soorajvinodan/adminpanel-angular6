@@ -15,7 +15,8 @@ const routes: Routes = [
       { path: 'maps', loadChildren: '../maps/maps.module#MapsModule' },
       { path: 'editors', loadChildren: '../editors/editors.module#EditorsModule' },
       { path: 'calendar', loadChildren: '../calendar/calendar.module#CalendarModule' },
-      { path: 'settings', loadChildren: '../settings/settings.module#SettingsModule' }
+      { path: 'settings', loadChildren: '../settings/settings.module#SettingsModule' },
+      { path: 'class', loadChildren: '../class/class.module#ClassModule' }
     ]
   }
 ];

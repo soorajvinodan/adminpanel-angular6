@@ -1,36 +1,26 @@
-import { Component, OnInit ,Input} from '@angular/core';
-import * as Chart from 'chart.js';
-import { colorCodes } from '@shared/config/colorCodes';
+import { Injectable } from '@angular/core';
 
-import { myService } from '../../data.service';
+@Injectable()
+export class myService {
 
-
-@Component({
-  selector: 'app-class',
-  templateUrl: './class.component.html',
-  styleUrls: ['./class.component.scss']
-})
-export class ClassComponent implements OnInit {
+  public sharedData = ["Pre Primary", "Primary", "Secondary", "Senior Secondary"];
+  deviceArray: any[] = [];
+  
 
 
-	SharedData: string;
-	
-
-	categoriesArray = ["Pre Primary", "Primary", "Secondary", "Senior Secondary"];
-	deviceArray: any[] = [];
-
-
-  constructor(private _myService: myService) {
-			
-		  console.log(this._myService.getData());
-
-			this.deviceArray = this._myService.getData();
-
+  constructor(){
+    for (let i in this.sharedData) {
+			let obj = {
+				name: this.sharedData[i],
+				devices: [
+					// {did:1, dname:"123"}
+				]
+			}
+			this.deviceArray.push(obj);
+		}
   }
 
-  ngOnInit() {
-    
-  }
+
 
 	schoolname_message: string;
 	error_box(input_id) {
@@ -40,15 +30,16 @@ export class ClassComponent implements OnInit {
 		document.getElementById(input_id).style.border = "1px solid #ced4da";
 	}
 
+
+  
 	SchoolName: string;
 	showMultiDevices: boolean = false;
-	showdevices: any[] = [];
-	
+  showdevices: any[] = [];
    // Basic Validation before Adding Devices
    deviceidValidationError: string;
    devicenameValidationError: string;
    categorytypeValidationError: string;
-   validate_Device(id, name,categorytype) {
+  validate_Device(id, name,categorytype) {
      if (id == "") {
        this.deviceidValidationError = "Please Enter the Device ID";
        this.error_box("deviceid");
@@ -83,15 +74,42 @@ export class ClassComponent implements OnInit {
      return true;
    }
   
+  
+  addDevice(id, name,categorytype) {
 
 
-	addDevice(id, name,categorytype) {
+			let deviceproperty = {
+				"did": id,
+        "dname": name
+			}
+			// this.showMultiDevices = true;
+			for (var i = 0; i < this.deviceArray.length; i++) {
+				if (this.deviceArray[i].schoolname === this.SchoolName) {
+					this.deviceArray[i].devices.push(deviceproperty);
+					console.log(this.deviceArray);
+					this.showdevices = this.deviceArray[i].devices;
+				}
+			}
+  }
+  
 
-		//forming array for new devices
-		if (this.validate_Device(id, name,categorytype)) {
-		
-			this._myService.addDevice(id,name,categorytype);
-		}
-	}
+  // setData (data) {
+  //   this.sharedData = data;
+  // }
+
+
+
+
+  getData () {
+    return this.deviceArray;
+  }
+
+  
+
+  getdevices () {
+    return this.showdevices;
+  }
+
+
 
 }

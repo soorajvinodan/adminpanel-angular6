@@ -1,5 +1,7 @@
 import { Component} from '@angular/core';
 import { CommonService } from '../../shared/services/common.service';
+import { myService } from '../../data.service';
+
 
 @Component({
   selector: 'app-sidebar',
@@ -11,30 +13,38 @@ export class SidebarComponent {
   categoriesArray = ["Pre Primary", "Primary", "Secondary", "Senior Secondary"];
   deviceArray: any[] = [];
   
+  constructor(private _myService: myService, public cmnSrv: CommonService) {
+
+  
+  
+    console.log(this._myService.getData());
+
+    this.categoriesArray = this._myService.getdevices();
+
+    this.deviceArray = this._myService.getData();
+
+    for(var i = 0; i < this.deviceArray.length; i++) {
+      var obj = this.deviceArray[i];
+  
+      console.log(obj.id);
+      }
 
 
 
-
-  constructor(public cmnSrv: CommonService) {
-
-    for (let i in this.categoriesArray) {
-			let obj = {
-				name: this.categoriesArray[i],
-				devices: [
-					// {did:1, dname:"123"}
-				]
-			}
-			this.deviceArray.push(obj);
-    }
-    
 
   }
+
+
+
+
 
  
   sidebarItems = [
     {link: '/', label: 'Dashboard', icon: 'dashboard'},
 
     {label: 'ClassRooms', icon: 'class', subItem: [   
+
+
       { label: 'Pre-Primary', icon: '' , subItem: [
         {link: '/components/class', label: 'Class 1', icon: 'l2'}
       
@@ -86,3 +96,6 @@ export class SidebarComponent {
   ];
 
 }
+
+
+ 

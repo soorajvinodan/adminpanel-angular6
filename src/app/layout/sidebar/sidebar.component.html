@@ -1,8 +1,3 @@
-
-
-
-
-
 <div class="sidebar"  [class.hide]="cmnSrv.dashboardState.sidebarToggle">
   <div class="sidebar-header align-middle">
     <!-- <img class="brandImg" src="http://via.placeholder.com/60x60" alt="brandImg"> -->
@@ -14,6 +9,28 @@
     <ul>
  
 
+
+
+
+        <div class="subjectWrap" *ngFor='let category of deviceArray'>
+            <div class="subjectNameWrap" (click)="showUnits(category)">
+                <div class="subjectName">{{category.name}}</div>
+            
+            </div>
+
+
+            <hr>
+            <div >
+                <div class="unitsWrap" *ngFor='let device of category.devices'>
+                    <div class="unitNameWrap">
+                        <div class="unitName" title='{{device.dname}}' (click)="getUnitContents(unit, category.name)">{{device.dname}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+          
       <li *ngFor="let item of sidebarItems;let i = index;" class="sidebar-item" [class.active]="temp.isActive" #temp="routerLinkActive" routerLinkActive  [routerLinkActiveOptions]="{exact: true}">
         <a *ngIf="!item.subItem" [routerLink]="item.link" ><i class="material-icons">{{item.icon}}</i>
           <strong class="mini-hide text-capitalize ">{{item.label}}</strong>

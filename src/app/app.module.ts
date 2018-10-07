@@ -10,7 +10,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { Ng6O2ChartModule } from 'ng6-o2-chart'; 
-
+import { myService } from './data.service';
 
 
 @NgModule({
@@ -27,7 +27,7 @@ import { Ng6O2ChartModule } from 'ng6-o2-chart';
     SignupComponent, 
     SafePipe,
     PageNotFoundComponent],
-  providers:    [ getInfoService ],
+  providers:    [ getInfoService,myService ],
   bootstrap:    [ AppComponent ]
 })
 
