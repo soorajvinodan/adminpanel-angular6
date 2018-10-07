@@ -1,7 +1,7 @@
 export const colorCodes = {
   primary: {
-    hex: '#3ebb8c',
-    rgba: '62,187,140'
+    hex: '#2196f3',
+    rgba: '33,150,243'
   },
   secondary: {
     hex: '#9092a5',

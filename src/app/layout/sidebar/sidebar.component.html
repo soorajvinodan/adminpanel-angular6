@@ -8,12 +8,19 @@
   <div class="sidebar-body">
     <ul>
  
-      
-        <div class="subjectWrap" *ngFor='let category of deviceArray'>
-            <div class="subjectNameWrap" (click)="showUnits(category)">
-                <div class="subjectName">{{category.name}}</div>
+
+
+ 
+
+
+
+        <div >
+
+          <li *ngFor='let category of deviceArray'>
+            <a  data-toggle="collapse" class="subjectNameWrap" (click)="showUnits(category)">
+                <span class="subjectName">{{category.name}}</span>
             
-            </div>
+            </a>
 
             <div >
                 <div class="unitsWrap" *ngFor='let device of category.devices'>
@@ -22,7 +29,8 @@
                     </div>
                 </div>
             </div>
-        </div>
+          </li>
+          </div>
 
 
           
@@ -61,15 +69,6 @@
             </div>
           </li>
         </div>
-
-
-
-
-
-
-
-
-
 
       </li>
     </ul>

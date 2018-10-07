@@ -6,9 +6,10 @@ export class myService {
   public sharedData = ["Pre Primary", "Primary", "Secondary", "Senior Secondary"];
   deviceArray: any[] = [];
   
-
-
+ 
   constructor(){
+
+
     for (let i in this.sharedData) {
 			let obj = {
 				name: this.sharedData[i],
@@ -17,10 +18,9 @@ export class myService {
 				]
 			}
 			this.deviceArray.push(obj);
-		}
+    }
+    
   }
-
-
 
 	schoolname_message: string;
 	error_box(input_id) {
@@ -30,8 +30,6 @@ export class myService {
 		document.getElementById(input_id).style.border = "1px solid #ced4da";
 	}
 
-
-  
 	SchoolName: string;
 	showMultiDevices: boolean = false;
   showdevices: any[] = [];
@@ -70,13 +68,12 @@ export class myService {
        this.categorytypeValidationError = "";
        this.no_error_box("categorytype");
      }
- 
      return true;
    }
   
   
   addDevice(id, name,categorytype) {
-    
+
 			let deviceproperty = {
 				"did": id,
         "dname": name
@@ -91,25 +88,16 @@ export class myService {
 			}
   }
  
-  
-
   // setData (data) {
   //   this.sharedData = data;
   // }
-
-
-
 
   getData () {
     return this.deviceArray;
   }
 
-  
-
   getdevices () {
     return this.showdevices;
   }
-
-
 
 }

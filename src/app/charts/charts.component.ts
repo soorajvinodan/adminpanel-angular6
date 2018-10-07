@@ -631,7 +631,7 @@ export class ChartsComponent implements OnInit {
         datasets: [
           {
             label: 'Population (millions)',
-            backgroundColor: ['#3ebb8c', '#9092a5', '#f36b56', '#39a8d0', '#fed33d'],
+            backgroundColor: ['#3e98bb', '#9092a5', '#f36b56', '#39a8d0', '#fed33d'],
             data: [2478, 5267, 734, 784, 433]
           }
         ]
