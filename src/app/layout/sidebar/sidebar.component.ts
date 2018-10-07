@@ -1,4 +1,4 @@
-import { Component ,Input} from '@angular/core';
+import { Component} from '@angular/core';
 import { CommonService } from '../../shared/services/common.service';
 
 
@@ -11,11 +11,6 @@ import { classdashboardComponent} from '../../components/classdashboard/classdas
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent {
-
-
-
-  @Input() message: string;
-
 
   categoriesArray = ["Pre Primary", "Primary", "Secondary", "Senior Secondary"];
   deviceArray: any[] = [];
