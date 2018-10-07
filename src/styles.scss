@@ -235,7 +235,7 @@ i.material-icons {
   background-image: linear-gradient(0deg,$black 1px,$white 0);
   &:focus{
     border: none;
-    box-shadow: 0 0.4rem 0.2rem -0.2rem lighten($primary,40%);
+    box-shadow: none;
     background-image: linear-gradient(0deg,lighten($primary,35%) 1px,$white 0);
   }
 }

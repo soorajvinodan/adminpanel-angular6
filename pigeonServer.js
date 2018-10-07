@@ -29,7 +29,8 @@ var express = require("express"),
 var providerJs = require('./js/providers/provider'),
     initRoute = require('./js/routes/initRoutes'),
     loginSignupRoute = require('./js/routes/loginSignupRoutes'),
-    adminRoutes = require('./js/routes/adminRoutes');
+    adminRoutes = require('./js/routes/adminRoutes'),
+    deviceRoutes = require('./js/routes/deviceRoutes');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}) );
@@ -81,6 +82,7 @@ else {
 app.use('/start',loginSignupRoute);
 app.use('/class',initRoute);
 app.use('/admin',adminRoutes);
+app.use('/device',deviceRoutes);
 providerJs.connectDb(function(err) {
     if(err) console.log(err);
     else {

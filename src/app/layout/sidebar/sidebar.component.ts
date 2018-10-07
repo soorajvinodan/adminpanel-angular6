@@ -1,5 +1,9 @@
-import { Component } from '@angular/core';
+import { Component ,Input} from '@angular/core';
 import { CommonService } from '../../shared/services/common.service';
+
+
+import { classdashboardComponent} from '../../components/classdashboard/classdashboard.component';
+
 
 @Component({
   selector: 'app-sidebar',
@@ -8,16 +12,65 @@ import { CommonService } from '../../shared/services/common.service';
 })
 export class SidebarComponent {
 
-  constructor(public cmnSrv: CommonService) {  }
 
+
+  @Input() message: string;
+
+
+  categoriesArray = ["Pre Primary", "Primary", "Secondary", "Senior Secondary"];
+  deviceArray: any[] = [];
+  
+
+
+
+  constructor(public cmnSrv: CommonService) {
+
+    for (let i in this.categoriesArray) {
+			let obj = {
+				name: this.categoriesArray[i],
+				devices: [
+					// {did:1, dname:"123"}
+				]
+			}
+			this.deviceArray.push(obj);
+    }
+    
+
+  }
+
+ 
   sidebarItems = [
     {link: '/', label: 'Dashboard', icon: 'dashboard'},
+
+    {label: 'ClassRooms', icon: 'class', subItem: [   
+      { label: 'Pre-Primary', icon: 'l1' , subItem: [
+        {link: '/components/class', label: 'Class 1', icon: 'l2'},
+        {link: '', label: 'Class 2', icon: 'l2'},
+      ]},
+      { label: 'Primary', icon: 'l1' , subItem: [
+        {link: 'void()', label: 'Sub Menu L2', icon: 'l2'},
+        {link: 'void()', label: 'Sub Menu L2', icon: 'l2'},
+      ]},
+      { label: 'Secondary', icon: 'l1' , subItem: [
+        {link: 'void()', label: 'Sub Menu L2', icon: 'l2'},
+        {link: 'void()', label: 'Sub Menu L2', icon: 'l2'},
+      ]},
+      { label: 'Senior-Secondary', icon: 'l1' , subItem: [
+        {link: 'void()', label: 'Sub Menu L2', icon: 'l2'},
+        {link: 'void()', label: 'Sub Menu L2', icon: 'l2'},
+      ]}
+
+    ]},
+
+    {link: '/calendar', label: 'Calendar', icon: 'date_range'},
+    {link: '/settings', label: 'Settings', icon: 'settings'},
+
     {label: 'Components', icon: 'apps', subItem: [
       {link: '/components/buttons', label: 'buttons', icon: 'b'},
       {link: '/components/grids', label: 'grid System', icon: 'gs'},
       {link: '/components/panels', label: 'panels', icon: 'p'},
       // {link:'/components/alerts',label:'alerts',icon:'a'},
-      // {link:'/components/notifications',label:'notifications',icon:'n'},
+      {link:'/components/notifications',label:'notifications',icon:'n'},
       {link: '/components/icons', label: 'icons', icon: 'i'},
       {link: '/components/typography', label: 'typography', icon: 't'},
     ]},
@@ -38,15 +91,8 @@ export class SidebarComponent {
     {link: '/charts', label: 'Charts', icon: 'show_chart'},
     {link: '/maps', label: 'Maps', icon: 'place'},
     {link: '/editors', label: 'Editors', icon: 'edit'},
-    {link: '/calendar', label: 'Calendar', icon: 'date_range'},
-    {link: '/settings', label: 'Settings', icon: 'settings'},
-    {label: 'Menu', icon: 'menu', subItem: [
-      {link: 'void()', label: 'Sub Menu L1', icon: 'l1'},
-      { label: 'Sub Menu L1', icon: 'l1' , subItem: [
-        {link: 'void()', label: 'Sub Menu L2', icon: 'l2'},
-        {link: 'void()', label: 'Sub Menu L2', icon: 'l2'},
-      ]},
-    ]}
+  
+
   ];
 
 }

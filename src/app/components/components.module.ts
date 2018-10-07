@@ -10,12 +10,14 @@ import { PanelsComponent } from './panels/panels.component';
 import { ComponentsRoutingModule } from './components-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { classdashboardComponent } from './classdashboard/classdashboard.component';
+
 @NgModule({
   imports: [
     CommonModule,
     ComponentsRoutingModule,
     ReactiveFormsModule
   ],
-  declarations: [ButtonsComponent, GridsComponent, NotificationsComponent, IconsComponent, TypographyComponent, AlertsComponent, PanelsComponent]
+  declarations: [ButtonsComponent, GridsComponent, NotificationsComponent, IconsComponent, TypographyComponent, AlertsComponent, PanelsComponent,classdashboardComponent]
 })
 export class ComponentsModule { }

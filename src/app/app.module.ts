@@ -9,7 +9,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
-import { Ng6O2ChartModule } from 'ng6-o2-chart';
+import { Ng6O2ChartModule } from 'ng6-o2-chart'; 
+
+
 
 @NgModule({
   imports:      [ 
@@ -19,10 +21,10 @@ import { Ng6O2ChartModule } from 'ng6-o2-chart';
     HttpModule, 
     AppRoutingModule, 
     Ng6O2ChartModule ],
-  declarations: [ 
+  declarations: [  
     AppComponent,
     LoginComponent,
-    SignupComponent,
+    SignupComponent, 
     SafePipe,
     PageNotFoundComponent],
   providers:    [ getInfoService ],

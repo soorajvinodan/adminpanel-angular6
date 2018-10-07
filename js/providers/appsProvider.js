@@ -1,7 +1,7 @@
 /**
- * All the functions related to deviceDb are in this file.
+ * All the functions related to apps DB are in this file.
  * Created by : Shrabanee
- * Date : 03/10/2018
+ * Date : 05/10/2018
  */
 "use strict";
 
@@ -9,11 +9,11 @@ var dbProvider = require('./provider.js');
 
 var ObjectID = require('mongodb').ObjectID;
 
-class deviceProvider {
+class appsProvider {
     constructor() {
     }
     getCollection(callback) {
-        dbProvider.getCollection('deviceDetail', (error, collection) => {
+        dbProvider.getCollection('appsDetail', (error, collection) => {
             /**
              * If no collection
              */
@@ -35,7 +35,7 @@ class deviceProvider {
      * @param {*} options 
      * @param {*} callback 
      */
-    save(options, callback) {
+    save(objToSave, callback) {
         this.getCollection((err, collection) => {
             if(err) {
                 console.log("Error in get collection save: ");
@@ -43,18 +43,9 @@ class deviceProvider {
                 callback(err);
             }
             else {
-                let insertObj = {
-                    did : options.did,
-                    live : true,
-                    useStats:[{
-                        st : new Date()
-                    }],
-                    appStats : [],
-                    ca : new Date()
-                };
-                collection.insertOne(insertObj,(err, result) => {
+                collection.insertOne(objToSave,(err, result) => {
                     if(err) {
-                        console.log("Error in saving device record: ");
+                        console.log("Error in saving apps record: ");
                         console.log(err);
                         callback(err);
                     }
@@ -82,7 +73,7 @@ class deviceProvider {
             else {
                 collection.findOne({did : did.toString()}, (err, result) => {
                     if(err) {
-                        console.log("Error in finding device record: ");
+                        console.log("Error in finding apps record: ");
                         console.log(err);
                         callback(err);
                     }
@@ -103,49 +94,20 @@ class deviceProvider {
         let did = options.did;
         this.getCollection((err, collection) => {
             if(err) {
-                console.log("Error in get collection findByDid: ");
+                console.log("Error in get collection updateStats: ");
                 console.log(err);
                 callback(err);
             }
             else {
                 let updObj = {$push:{useStats : {
                         st : new Date()
-                    }
-                }}
-                collection.updateOne({did : did.toString()},updObj, (err) => {
+                        }
+                    }, 
+                    $set : {live : true}
+                };
+                collection.updateOne({did : did.toString(), appid : options.appid.toString()},updObj, (err) => {
                     if(err) {
-                        console.log("Error in updateStats device record: ");
-                        console.log(err);
-                        callback(err);
-                    }
-                    else {
-                        callback(null);
-                    }  
-                })
-            }
-        });
-    }
-
-    /**
-     * 
-     * @param {*} did 
-     * @param {*} query 
-     * @param {*} callback 
-     */
-    insertApps(did, options, callback) {
-        this.getCollection((err, collection) => {
-            if(err) {
-                console.log("Error in get collection insertApps: ");
-                console.log(err);
-                callback(err);
-            }
-            else {
-                let updObj = {
-                    $addToSet : {apps : options}
-                }
-                collection.updateOne({did : did.toString()}, updObj, (err) => {
-                    if(err) {
-                        console.log("Error in insertApps device record: ");
+                        console.log("Error in updateStats apps record: ");
                         console.log(err);
                         callback(err);
                     }
@@ -157,4 +119,4 @@ class deviceProvider {
         });
     }
 }
-module.exports = new deviceProvider();
+module.exports = new appsProvider();

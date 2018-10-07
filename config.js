@@ -33,6 +33,7 @@ config.prototype.connectDatabase = function()
 	this.classDbUrl = dbConf.classDbUrl;
     this.pigeonUsrDbUrl = dbConf.pigeonUsrDbUrl;
     this.deviceDbUrl = dbConf.deviceDbUrl;
+    this.appsDbUrl = dbConf.appsDbUrl;
 
     return this;
 }

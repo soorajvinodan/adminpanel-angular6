@@ -4,7 +4,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { AppComponent } from './app.component';
-
+ 
 const routes: Routes = [
 
   { path: '', loadChildren: './dashboard/dashboard.module#DashboardModule' },

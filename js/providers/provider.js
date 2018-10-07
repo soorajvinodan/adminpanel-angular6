@@ -11,7 +11,7 @@ const Config = require('../../config.js').config;
 const url = Config.connectDatabase();
 var MongoClient = require('mongodb').MongoClient, selectedDB;
 const async = require('async');
-let classDB = null, customerDb = null, deviceDb = null;
+let classDB = null, customerDb = null, deviceDb = null, appDb = null;
 /**
  * This method creates a connection to database at once in the initialization of application.
  */
@@ -67,6 +67,23 @@ exports.connectDb = function(callback) {
                     callback(null);
                 }
             });
+        },
+        callback =>  {
+            MongoClient.connect(url.appsDbUrl,{ useNewUrlParser: true },(err,instance) =>  {
+
+                /**
+                 * If error in connecting then call callback with error message
+                 */
+                if(err) {
+                    console.log("Error in connecting appsDb");
+                    callback(err);
+                }
+                else {
+                    appDb = instance;
+                    console.log("appsDb Connected");
+                    callback(null);
+                }
+            });
         }
     ],
     (err) => {
@@ -95,6 +112,7 @@ function getCollection(collectionName, callback) {
         case 'pigeonUserDetail': selectedDB = customerDb; break;
         case 'loginDetail': selectedDB = customerDb; break;
         case 'deviceDetail': selectedDB = deviceDb; break;
+        case 'appsDetail': selectedDB = appDb; break;
     }
     /**
      * LoginDetail is created under pigeonUserDetail.
@@ -192,12 +210,33 @@ function ensureIndexes(callback) {
              */
             getCollection('deviceDetail',(err,collection) => {
                 if(err) {
-                    callback("Error in ensuring of all classDetail");
+                    callback("Error in ensuring of all deviceDetail");
                 }
                 else {
                     async.parallel( [
                             callback => {
                                 collection.createIndex({"did":1},{ unique: true },callback);
+                            }
+                        ],
+                        err => {
+                            callback(err);
+                        }
+                    );
+                }
+            });
+        },
+        (callback) => {
+            /**
+             * Indexing
+             */
+            getCollection('appsDetail',(err,collection) => {
+                if(err) {
+                    callback("Error in ensuring of all appsDetail");
+                }
+                else {
+                    async.parallel( [
+                            callback => {
+                                collection.createIndex({"did":1, "appid":1},{ unique: true },callback);
                             }
                         ],
                         err => {
