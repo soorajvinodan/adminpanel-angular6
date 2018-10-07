@@ -10,9 +10,7 @@ export class TasksComponent {
   tasks = [
     { check: true, text: 'Learn something new' },
     { check: false, text: 'Read 5 book in a year' },
-    { check: true, text: 'Start a new hobby' },
-    { check: false, text: 'Do a very imporatnt task' },
-    { check: true, text: 'Not so very important task' }
+    { check: true, text: 'Start a new hobby' }
   ];
 
   constructor() {}

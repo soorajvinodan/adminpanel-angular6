@@ -7,7 +7,6 @@ import { IconsComponent } from './icons/icons.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { TypographyComponent } from './typography/typography.component';
 import { PanelsComponent } from './panels/panels.component';
-import { classdashboardComponent} from './classdashboard/classdashboard.component';
 
 const routes: Routes = [
   { path: 'alerts', component: AlertsComponent },
@@ -16,8 +15,7 @@ const routes: Routes = [
   { path: 'icons', component: IconsComponent },
   { path: 'notifications', component: NotificationsComponent },
   { path: 'panels', component: PanelsComponent },
-  { path: 'typography', component: TypographyComponent },
-  { path: 'class', component: classdashboardComponent }
+  { path: 'typography', component: TypographyComponent }
 ];
 
 

@@ -1,0 +1,54 @@
+<div class="card">
+  <div class="card-body">
+    <div class="row">
+     
+            <div id='dashboard-form' class="col-md-12">
+                <div class="form-group-col col-sm-3">Device ID</div>
+                <div class="form-group-col col-sm-3">Device Name</div>
+                <div class="form-group-col col-sm-3">Select Category</div>
+                <div class="form-group-col col-sm-3">Action</div>
+            </div>
+            <div id="dashboard-form" *ngIf="showMultiDevices"></div>
+            <div class="form-group-col col-sm-3">
+                <input class="form-control" type="text" #id id="deviceid" [ngClass]="{'form-error-input' : deviceidValidationError}" autocomplete="off" Placeholder="Enter Device Name" /> 
+                <span class="form_error_message" id="deviceid_div">{{deviceidValidationError}}</span>
+            </div>
+            <div class="form-group-col col-sm-3">
+                <input class="form-control" type="text" #name id="devicename" [ngClass]="{'form-error-input' : devicenameValidationError}" autocomplete="off" Placeholder="Enter Device Name" /> 
+                <span class="form_error_message" id="devicename_div">{{devicenameValidationError}}</span>
+            </div>
+
+            
+            <div class="form-group-col col-sm-3">
+                     
+                <select #categorytype  id="categorytype" class="form-control" [ngClass]="{'form-error-input' : categorytypeValidationError}">
+                <option value=""> Please Select </option>
+                <option value="{{category.name}}" class="subjectWrap" *ngFor='let category of deviceArray'>
+                {{category.name}}
+                </option>
+                </select>
+                <span class="form_error_message" id="categorytype_div">{{categorytypeValidationError}}</span>
+
+            </div>
+
+            <div class="form-group-col col-sm-3">
+                    <button class="btn btn-primary" (click)="addDevice(id.value,name.value,categorytype.value)">Add Devices</button>
+            </div>
+
+
+            <div>
+                <div class="form-div" *ngFor="let device of showdevices">
+                    <div class="form-group-col col-sm-4">{{device.id}}</div>
+                    <div class="form-group-col col-sm-4">{{device.name}}</div>
+                    <div class="form-group-col col-sm-4">
+                        <button class="btn btn-primary" (click)="showstats(device)">Show</button>
+                        <button class="btn btn-primary" (click)="removeDevice(device)">Delete</button>
+                    </div>
+                </div>
+            </div>
+ 
+
+
+
+  </div>
+</div>

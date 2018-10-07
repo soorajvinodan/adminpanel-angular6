@@ -9,7 +9,7 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { TasksComponent } from './tasks/tasks.component';
 import { FormsModule } from '@angular/forms';
 import { StatsComponent } from './stats/stats.component';
-
+import { ClassComponent } from './class/class.component';
  
 
 @NgModule({
@@ -26,6 +26,7 @@ import { StatsComponent } from './stats/stats.component';
     DashboardHomeComponent,
     TasksComponent,
     StatsComponent,
+    ClassComponent
   ]
 })
 export class DashboardModule { }
