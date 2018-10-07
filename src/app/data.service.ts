@@ -76,21 +76,21 @@ export class myService {
   
   
   addDevice(id, name,categorytype) {
-
-
+    
 			let deviceproperty = {
 				"did": id,
         "dname": name
 			}
 			// this.showMultiDevices = true;
 			for (var i = 0; i < this.deviceArray.length; i++) {
-				if (this.deviceArray[i].schoolname === this.SchoolName) {
+				if (this.deviceArray[i].name === categorytype) {
 					this.deviceArray[i].devices.push(deviceproperty);
 					console.log(this.deviceArray);
 					this.showdevices = this.deviceArray[i].devices;
 				}
 			}
   }
+ 
   
 
   // setData (data) {

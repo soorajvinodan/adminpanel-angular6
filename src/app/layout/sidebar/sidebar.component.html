@@ -8,18 +8,13 @@
   <div class="sidebar-body">
     <ul>
  
-
-
-
-
+      
         <div class="subjectWrap" *ngFor='let category of deviceArray'>
             <div class="subjectNameWrap" (click)="showUnits(category)">
                 <div class="subjectName">{{category.name}}</div>
             
             </div>
 
-
-            <hr>
             <div >
                 <div class="unitsWrap" *ngFor='let device of category.devices'>
                     <div class="unitNameWrap">
